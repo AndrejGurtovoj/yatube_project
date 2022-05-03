@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Краткое описание страницы">
-    <title>Заголовок для отображения в названии вкладки</title>
-    <link rel="icon" href="fav.ico" type="image">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-  </head>
-  <body>
-    <header>
-        Верхняя часть страницы: логотип, контакты
-      <nav>
-        Меню (навигация)
-      </nav>
-    </header>
-    <main>
-      Основное содержимое страницы
-    </main>
-    <footer>
-      Подвал
-    </footer>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+    Последние обновления на сайте
+{% endblock %}
+{% block content %}
+    <div class="container py-5"> 
+      <h1>Последние обновления на сайте</h1>
+      {% for post in posts %}
+        <ul>
+          <li>Автор: {{ post.author.get_full_name }}</li>            
+          <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+        </ul>
+        <p>{{ post.text }}</p>    
+        <a href="{% url 'posts:group_list' post.group.slug %}">Все записи группы.</a>
+        {% if not forloop.last %}<hr>{% endif %}
+      {% endfor %}
+    </div> 
+{% endblock %}
