@@ -1,19 +1,30 @@
-
+<!-- group_list.html -->
 {% extends 'base.html' %}
-{% block title %}
-    Записи сообщества {{ group_list }}
-{% endblock %}
+{% block title %}Последние обновления на сайте{% endblock %}
 {% block content %}
-    <div class="container py-5"> 
-      <h1> {{ group_list.description }} </h1>
-      <p> {{ group_list.title }} </p>
-      {% for post in posts %}
+<main>
+    <div class="container">
+      <h1>Лев Толстой – зеркало русской революции.</h1>
+      </article>
+      <hr>
+      <article>
+        {% for post in posts %}
         <ul>
-          <li>Автор: {{ post.author.get_full_name }}</li>            
-          <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
-        </ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+        </ul> 
         <p>{{ post.text }}</p>    
-        {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-    </div> 
+        {% if post.group %}   
+  <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+        {% endif %} 
+{% if not forloop.last %}<hr>{% endif %}
+        {% endfor %} 
+      </article>
+      <!-- под последним постом нет линии -->
+    </div>  
+  </main> 
 {% endblock %}
