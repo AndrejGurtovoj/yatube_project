@@ -1,13 +1,15 @@
-{% load static %}
-<!-- Использованы классы Bootstrap для создания типовой навигации с логотипом -->
-<!-- В дальнейшем тут будет создано полноценное меню -->
-<nav class="navbar navbar-light" style="background-color: #252525">
-  <div class="container">
-    <!-- ссылка должна вести на главную страницу -->
-    <a class="navbar-brand" href="{% url 'posts:index' %}">
-      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-      <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
-      <span style="color:red">Ya</span><span style="color:white">Tube</span>
-    </a>
-  </div>
-</nav>
+
+<header>
+  <nav style="background: red;"> <!-- Красный фон для элемента nav -->
+    <ul>
+      <!-- Отобразить элемент в строку; установить размер шрифта в 20px; применить шрифт без отсечек -->
+      <li style="display: inline-block; font-size: 20px; font-family: sans-serif;">
+        <a href="/" style="color: white;"><h1>Yatube</h1></a> <!-- Шрифт покрасить в белый; -->
+      </li>
+      <!-- Отобразить элемент в строку; установить размер шрифта в 20px; применить шрифт без отсечек -->
+      <li style="display: inline-block; font-size: 20px; font-family: sans-serif;">
+        <a href="about/">О сайте</a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,48 +1,18 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <!-- Сайт готов работать с мобильными устройствами -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Загружаем fav-иконки -->
-    <link rel="icon" type="image" href="{% static 'img/fav/favicon.ico' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}">
-    <link rel="icon" type="image/png" size="192x192" href="{% static 'img/fav/android-chrome-192x192.png' %}">
-    <link rel="icon" type="image/png" size="256x256" href="{% static 'img/fav/android-chrome-256x256.png' %}">
-    <link rel="mask-icon" href="{% static 'img/fav/safari-pinned-tab.svg' %}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{% static 'img/fav/mstile-150x150.png' %}">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Подключаем Bootstrap -->
-    <link
-      href="{% static 'css/bootstrap.min_5.1.3.css' %}"
-      rel="stylesheet">
-    <title>
-      {% block title %}
-      {% endblock %}
-    </title>
+<!DOCTYPE html> 
+<html lang="ru">          
+  <head>       
   </head>
-  <body>
+  <body>       
     <header>
       {% include 'includes/header.html' %}
     </header>
     <main>
-      <!-- Класс py-5 создает отступы сверху и снизу блока -->
-      <div class="container py-5">
-        {% block content %}
-          Контент не подвезли :(
-        {% endblock %}
-      </div>
+      {% block content %}
+        Контент не подвезли :(
+      {% endblock %}
     </main>
-    <!-- Использованы классы Bootstrap: -->
-    <!-- border-top: создаёт тонкую линию сверху блока -->
-    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
-    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->
-    <footer class="border-top text-center py-3">
-      {% include 'includes/footer.html' %}
+    <footer>
+      {% include 'includes/footer.html' %} 
     </footer>
   </body>
 </html>
