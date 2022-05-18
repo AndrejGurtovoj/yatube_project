@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+
+
   <h1>{{ title }}</h1>
   <article>
   {% for post in posts %}
@@ -13,8 +15,10 @@
       </li>
     </ul>      
     <p>{% if post.group %}</p>
-    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    <a href="{% url 'posts:group_list' post.group.slug %}">{{post.group.title}}</a>
     <hr>{% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+    {{post.text}}
 {% endfor %}
   </article>
 {% endblock %}
