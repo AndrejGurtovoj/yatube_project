@@ -3,9 +3,10 @@
 {% block content %}
 
 
-  <h1>{{ title }}</h1>
-  <article>
+  <h1>Это главная страница проекта Yatube</h1>
+  
   {% for post in posts %}
+  <article>
     <ul>
       <li>
         Автор: {{ post.author.get_full_name }}
@@ -16,9 +17,9 @@
     </ul>      
     <p>{% if post.group %}</p>
     <a href="{% url 'posts:group_list' post.group.slug %}">{{post.group.title}}</a>
+  </article>
     <hr>{% endif %}
     {% if not forloop.last %}<hr>{% endif %}
     {{post.text}}
 {% endfor %}
-  </article>
 {% endblock %}
